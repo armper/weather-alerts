@@ -51,7 +51,7 @@ Routes:
 DashboardComponent: Displays the list of weather alerts, allowing users to add, edit, or delete alerts. Each alert item includes a link to open the WeatherAlertEditorComponent for editing. Emits an event when an alert is added or removed to update the MapComponent. Also, displays real-time weather updates and forecasts using the WeatherDataService.
 Fields: alerts (array of alert objects), currentWeather, weatherForecast
 Events: alertAdded, alertRemoved
-Included ## Components WeatherAlertEditorComponent
+Included Components: WeatherAlertEditorComponent
 WeatherAlertEditorComponent: Provides a form for creating or editing weather alerts,
 
 
