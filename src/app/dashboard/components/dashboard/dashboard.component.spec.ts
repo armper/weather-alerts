@@ -36,7 +36,7 @@ describe('DashboardComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).to.exist;
   });
 
   describe('User views the dashboard', () => {
@@ -53,7 +53,7 @@ describe('DashboardComponent', () => {
       // Query the rendered DOM elements for the alert items
       const alertItems = fixture.nativeElement.querySelectorAll('.alert-item');
       // Check if the correct number of alert items are rendered (in this case, 2)
-      expect(alertItems.length).toBe(2);
+      expect(alertItems.length).to.be.equal(2);
     });
   });
 
@@ -64,7 +64,7 @@ describe('DashboardComponent', () => {
       fixture.detectChanges();
 
       const alertForm = fixture.nativeElement.querySelector('.alert-form');
-      expect(alertForm).toBeTruthy();
+      expect(alertForm).to.exist;
     });
   });
 
