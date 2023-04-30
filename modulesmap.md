@@ -52,13 +52,11 @@ DashboardComponent: Displays the list of weather alerts, allowing users to add, 
 Fields: alerts (array of alert objects), currentWeather, weatherForecast
 Events: alertAdded, alertRemoved
 Included Components: WeatherAlertEditorComponent
-WeatherAlertEditorComponent: Provides a form for creating or editing weather alerts,
-
-
-allowing users to enter a name, description, start and end dates, and location (chosen from a map or a list of cities or states). Outputs the created or updated alert. Supports sharing of weather alerts on social media platforms using the SocialSharingComponent.
+WeatherAlertEditorComponent: Provides a form for creating or editing weather alerts, allowing users to enter a name, description, start and end dates, and location (chosen from a map or a list of cities or states). Outputs the created or updated alert. Supports sharing of weather alerts on social media platforms using the SocialSharingComponent.
 - Fields: name, description, startDate, endDate, locationType (map or list), location (city or state)
 - Outputs: alertSaved
 - Included ## Components SocialSharingComponent
+
 - SocialSharingComponent: Allows users to share weather alerts on social media platforms like Facebook, Twitter, or Instagram.
 - Inputs: alertData
 - Included ## Components None

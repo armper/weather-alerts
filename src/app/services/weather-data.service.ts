@@ -1,23 +1,19 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { IWeatherDataService } from './iweather-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherDataService {
-  private apiKey = 'YOUR_API_KEY';
-  private apiUrl = 'https://api.openweathermap.org/data/2.5';
+export class WeatherDataService implements IWeatherDataService {
 
   constructor(private http: HttpClient) { }
 
-  getCurrentWeather(location: string): Observable<any> {
-    const url = `${this.apiUrl}/weather?q=${location}&appid=${this.apiKey}`;
-    return this.http.get(url);
+  getCurrentWeather() {
+    // Implement the logic to fetch the real current weather data
   }
 
-  getWeatherForecast(location: string): Observable<any> {
-    const url = `${this.apiUrl}/forecast?q=${location}&appid=${this.apiKey}`;
-    return this.http.get(url);
+  getWeatherForecast() {
+    // Implement the logic to fetch the real weather forecast data
   }
 }

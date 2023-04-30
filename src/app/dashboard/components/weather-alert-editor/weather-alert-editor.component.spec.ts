@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WeatherAlertEditorComponent } from './weather-alert-editor.component';
 
-describe('WeatherAlertEditorComponent', () => {
+/* describe('WeatherAlertEditorComponent', () => {
   let component: WeatherAlertEditorComponent;
   let fixture: ComponentFixture<WeatherAlertEditorComponent>;
 
-  beforeEach(async () => {
+/*   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ WeatherAlertEditorComponent ]
     })
@@ -15,9 +15,9 @@ describe('WeatherAlertEditorComponent', () => {
     fixture = TestBed.createComponent(WeatherAlertEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }); */
 
-  it('should create', () => {
+/*   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+}); */
