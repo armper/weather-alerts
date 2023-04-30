@@ -27,8 +27,17 @@ export class WeatherAlertEditorComponent implements OnInit {
 
   onSubmit(): void {
     if (this.alertForm.valid) {
-      this.alertSaved.emit(this.alertForm.value);
+      const formData = this.alertForm.value;
+      const alertData = {
+        ...formData,
+        dates: {
+          start: new Date(formData.startDate),
+          end: new Date(formData.endDate),
+        },
+      };
+      this.alertSaved.emit(alertData);
       this.alertForm.reset();
     }
   }
+
 }

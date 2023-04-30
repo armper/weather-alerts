@@ -1,5 +1,6 @@
 import { IWeatherDataService, WEATHER_DATA_SERVICE, ICurrentWeather, IWeatherForecast } from 'src/app/services/iweather-data.service';
 import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',

@@ -4,6 +4,7 @@ import { WeatherAlertEditorComponent } from '../weather-alert-editor/weather-ale
 import { of } from 'rxjs';
 import { IWeatherDataService, WEATHER_DATA_SERVICE } from 'src/app/services/iweather-data.service';
 import { ReactiveFormsModule } from '@angular/forms'; // Add this import
+import { DatePipe } from '@angular/common';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -21,7 +22,8 @@ describe('DashboardComponent', () => {
       declarations: [DashboardComponent, WeatherAlertEditorComponent],
       imports: [ReactiveFormsModule],
       providers: [
-        { provide: WEATHER_DATA_SERVICE, useValue: weatherDataServiceMock }
+        { provide: WEATHER_DATA_SERVICE, useValue: weatherDataServiceMock },
+        DatePipe
       ]
     })
       .compileComponents();
@@ -66,7 +68,6 @@ describe('DashboardComponent', () => {
     });
   });
 
-
 });
 
 
@@ -74,44 +75,46 @@ describe('DashboardComponent', () => {
 
 
 
- describe('User edits an existing alert', () => {
-   beforeEach(() => {
-     component.alerts = [
-       { id: 1, name: 'Alert 1', description: 'Description 1', dates: { start: new Date(), end: new Date() }, location: 'City 1' },
-       { id: 2, name: 'Alert 2', description: 'Description 2', dates: { start: new Date(), end: new Date() }, location: 'City 2' },
-     ];
-     fixture.detectChanges();
-   });
+  describe('User edits an existing alert', () => {
+    beforeEach(() => {
+      component.alerts = [
+        { id: 1, name: 'Alert 1', description: 'Description 1', dates: { start: new Date(), end: new Date() }, location: 'City 1' },
+        { id: 2, name: 'Alert 2', description: 'Description 2', dates: { start: new Date(), end: new Date() }, location: 'City 2' },
+      ];
+      fixture.detectChanges();
+    });
 
-   it('should display a form with the current alert information', () => {
-     const editButton = fixture.nativeElement.querySelectorAll('.edit-alert-button')[0];
-     editButton.click();
-     fixture.detectChanges();
+    it('should display a form with the current alert information', () => {
+      const editButton = fixture.nativeElement.querySelectorAll('.edit-alert-button')[0];
+      editButton.click();
+      fixture.detectChanges();
 
-     const alertForm = fixture.nativeElement.querySelector('.alert-form');
-     expect(alertForm).toBeTruthy();
-   });
+      const alertForm = fixture.nativeElement.querySelector('.alert-form');
+      expect(alertForm).toBeTruthy();
+    });
 
-   it('should allow the user to modify the name, description, dates, and location', () => {
-     const editButton = fixture.nativeElement.querySelectorAll('.edit-alert-button')[0];
-     editButton.click();
-     fixture.detectChanges();
+    it('should allow the user to modify the name, description, dates, and location', () => {
+      const editButton = fixture.nativeElement.querySelectorAll('.edit-alert-button')[0];
+      editButton.click();
+      fixture.detectChanges();
 
-     const alertForm = fixture.nativeElement.querySelector('.alert-form');
-     const nameInput = alertForm.querySelector('.name-input');
-     const descriptionInput = alertForm.querySelector('.description-input');
-     const startDateInput = alertForm.querySelector('.start-date-input');
-     const endDateInput = alertForm.querySelector('.end-date-input');
-     const locationInput = alertForm.querySelector('.location-input');
+      const alertForm = fixture.nativeElement.querySelector('.alert-form');
+      const nameInput = alertForm.querySelector('.name-input');
+      const descriptionInput = alertForm.querySelector('.description-input');
+      const startDateInput = alertForm.querySelector('.start-date-input');
+      const endDateInput = alertForm.querySelector('.end-date-input');
+      const locationInput = alertForm.querySelector('.location-input');
 
-     expect(nameInput).toBeTruthy();
-     expect(descriptionInput).toBeTruthy();
-     expect(startDateInput).toBeTruthy();
-     expect(endDateInput).toBeTruthy();
-     expect(locationInput).toBeTruthy();
-   });
+      expect(nameInput).toBeTruthy();
+      expect(descriptionInput).toBeTruthy();
+      expect(startDateInput).toBeTruthy();
+      expect(endDateInput).toBeTruthy();
+      expect(locationInput).toBeTruthy();
+    });
 
- });
+  });
+
+
 
  describe('User deletes an alert', () => {
    beforeEach(() => {
