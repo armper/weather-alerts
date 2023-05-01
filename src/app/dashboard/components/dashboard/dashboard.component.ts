@@ -13,6 +13,11 @@ export class DashboardComponent implements OnInit {
   weatherForecast: IWeatherForecast[] = [];
   showAddAlertForm: boolean = false;
 
+  editingAlert: any | null = null;
+
+  // Add a counter to generate unique IDs for alerts
+  private alertIdCounter = 1;
+
   @Output() alertAdded = new EventEmitter();
   @Output() alertRemoved = new EventEmitter();
 
@@ -29,19 +34,30 @@ export class DashboardComponent implements OnInit {
   }
 
   onAlertSaved(alert: any): void {
-    this.alerts.push(alert);
+    if (this.editingAlert) {
+      const index = this.alerts.findIndex(a => a.id === this.editingAlert.id);
+      if (index !== -1) {
+        this.alerts[index] = alert;
+      }
+      this.editingAlert = null;
+    } else {
+      // Assign a unique ID to the new alert
+      alert.id = this.alertIdCounter++;
+      this.alerts.push(alert);
+    }
     this.showAddAlertForm = false;
     this.alertAdded.emit();
   }
 
   addAlert(): void {
+    this.editingAlert = null;
     this.showAddAlertForm = true;
     this.alertAdded.emit();
-
   }
 
   editAlert(alert: any): void {
-    // Implement editing an existing alert
+    this.editingAlert = alert;
+    this.showAddAlertForm = true;
   }
 
   deleteAlert(alert: any): void {

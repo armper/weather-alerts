@@ -9,6 +9,17 @@
       "preLaunchTask": "npm: start",
       "url": "http://localhost:4200/"
     },
+    // open cypress
+    {
+      "name": "cypress open",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/node_modules/cypress/bin/cypress.js",
+      "args": [
+        "open"
+      ]
+    },
     {
       "name": "ng test",
       "type": "chrome",

@@ -1,5 +1,4 @@
-// weather-alert-editor.component.ts
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class WeatherAlertEditorComponent implements OnInit {
   @Output() alertSaved = new EventEmitter();
+  @Input() editingAlert: any | null = null;
   alertForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -23,6 +23,9 @@ export class WeatherAlertEditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.editingAlert) {
+      this.alertForm.patchValue(this.editingAlert);
+    }
   }
 
   onSubmit(): void {
@@ -39,5 +42,4 @@ export class WeatherAlertEditorComponent implements OnInit {
       this.alertForm.reset();
     }
   }
-
 }

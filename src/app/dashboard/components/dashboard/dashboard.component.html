@@ -1,25 +1,13 @@
 <div class="dashboard">
   <h1>Dashboard</h1>
-  <div class="current-weather">
-    Current Weather: {{ currentWeather?.temp }}°C, {{ currentWeather?.description }}
-  </div>
-  <div class="weather-forecast">
-    Weather Forecast:
-    <div *ngFor="let forecast of weatherForecast">
-      {{ forecast.date }}: {{ forecast.temp }}°C, {{ forecast.description }}
-    </div>
-  </div>
+  <app-current-weather [currentWeather]="currentWeather"></app-current-weather>
+  <app-weather-forecast [weatherForecast]="weatherForecast"></app-weather-forecast>
   <button class="add-alert-button" (click)="addAlert()">Add Alert</button>
   <div class="alerts-list">
-    <div *ngFor="let alert of alerts" class="alert-item">
-      <h3>{{ alert.name }}</h3>
-      <p>{{ alert.description }}</p>
-      <p>Start: {{ alert.dates?.start | date:'medium' }}</p>
-      <p>End: {{ alert.dates?.end | date:'medium' }}</p>
-      <p>Location: {{ alert.location }}</p>
-      <button (click)="editAlert(alert)">Edit</button>
-      <button (click)="deleteAlert(alert)">Delete</button>
-    </div>
+    <app-alert-item *ngFor="let alert of alerts" [alert]="alert" (edit)="editAlert(alert)"
+      (delete)="deleteAlert(alert)">
+    </app-alert-item>
   </div>
-  <app-weather-alert-editor *ngIf="showAddAlertForm" (alertSaved)="onAlertSaved($event)" class="alert-form"></app-weather-alert-editor>
+  <app-weather-alert-editor *ngIf="showAddAlertForm" [editingAlert]="editingAlert" (alertSaved)="onAlertSaved($event)"
+    class="alert-form"></app-weather-alert-editor>
 </div>
