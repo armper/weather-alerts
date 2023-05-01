@@ -1,1 +1,29 @@
-<p>weather-alert-editor works!</p>
+<!-- weather-alert-editor.component.html -->
+<form [formGroup]="alertForm" (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input type="text" formControlName="name" id="name" />
+
+  <label for="description">Description:</label>
+  <input type="text" formControlName="description" id="description" />
+
+  <label for="startDate">Start Date:</label>
+  <input type="date" formControlName="startDate" id="startDate" />
+
+  <label for="endDate">End Date:</label>
+  <input type="date" formControlName="endDate" id="endDate" />
+
+  <label for="locationType">Location Type:</label>
+  <select formControlName="locationType" id="locationType">
+    <option value="map">Map</option>
+    <option value="list">List</option>
+  </select>
+
+  <label for="location">Location:</label>
+  <input type="text" formControlName="location" id="location" />
+
+  <button type="submit">Save Alert</button>
+</form>
+
+<!-- Add the SocialSharingComponent -->
+<!-- <app-social-sharing [alert]="alertForm.value"></app-social-sharing>
+ -->

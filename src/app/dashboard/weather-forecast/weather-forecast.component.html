@@ -1,0 +1,6 @@
+<div class="weather-forecast">
+  Weather Forecast:
+  <div *ngFor="let forecast of weatherForecast">
+    {{ forecast.date }}: {{ forecast.temp }}°C, {{ forecast.description }}
+  </div>
+</div>

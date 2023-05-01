@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+  <h1>Dashboard</h1>
+  <app-current-weather [currentWeather]="currentWeather"></app-current-weather>
+  <app-weather-forecast [weatherForecast]="weatherForecast"></app-weather-forecast>
+  <button class="add-alert-button" (click)="addAlert()">Add Alert</button>
+  <div class="alerts-list">
+    <app-alert-item *ngFor="let alert of alerts" [alert]="alert" (edit)="editAlert(alert)"
+      (delete)="deleteAlert(alert)">
+    </app-alert-item>
+  </div>
+  <app-weather-alert-editor *ngIf="showAddAlertForm" [editingAlert]="editingAlert" (alertSaved)="onAlertSaved($event)"
+    class="alert-form"></app-weather-alert-editor>
+</div>

@@ -1,0 +1,9 @@
+<div class="alert-item">
+  <h3>{{ alert.name }}</h3>
+  <p>{{ alert.description }}</p>
+  <p>Start: {{ alert.dates?.start | date:'medium' }}</p>
+  <p>End: {{ alert.dates?.end | date:'medium' }}</p>
+  <p>Location: {{ alert.location }}</p>
+  <button (click)="onEdit()">Edit</button>
+  <button (click)="onDelete()">Delete</button>
+</div>
